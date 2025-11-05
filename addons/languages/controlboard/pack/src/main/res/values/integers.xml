@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Modifier Keys -->
+    <integer name="key_code_ctrl">-100</integer>
+    <integer name="key_code_shift">-101</integer>
+    <integer name="key_code_alt">-102</integer>
+    <integer name="key_code_command">-103</integer>
+    <integer name="key_code_fn">-104</integer>
+    
+    <!-- Navigation Keys -->
+    <integer name="key_code_arrow_up">-105</integer>
+    <integer name="key_code_arrow_down">-106</integer>
+    <integer name="key_code_arrow_left">-107</integer>
+    <integer name="key_code_arrow_right">-108</integer>
+    
+    <!-- Function Keys -->
+    <integer name="key_code_f1">-109</integer>
+    <integer name="key_code_f2">-110</integer>
+    <integer name="key_code_f3">-111</integer>
+    <integer name="key_code_f4">-112</integer>
+    <integer name="key_code_f5">-113</integer>
+    <integer name="key_code_f6">-114</integer>
+    <integer name="key_code_f7">-115</integer>
+    <integer name="key_code_f8">-116</integer>
+    <integer name="key_code_f9">-117</integer>
+    
+    <!-- Special Keys -->
+    <integer name="key_code_tab">-121</integer>
+    <integer name="key_code_esc">-122</integer>
+    <integer name="key_code_space">-123</integer>
+    <integer name="key_code_enter">-124</integer>
+    <integer name="key_code_delete">-125</integer>
+    
+    <!-- Page / Home / End -->
+    <integer name="key_code_page_up">-127</integer>
+    <integer name="key_code_page_down">-128</integer>
+    <integer name="key_code_home">-129</integer>
+    <integer name="key_code_end">-130</integer>
+    
+    <!-- Mode Switching -->
+    <integer name="key_code_fn_mode">-131</integer>
+    <integer name="key_code_standard_mode">-132</integer>
+</resources>

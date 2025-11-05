@@ -1,0 +1,84 @@
+name: Build Language Pack APK
+
+on:
+  workflow_dispatch:
+    inputs:
+      LANGUAGE_PACK:
+        description: 'Language pack name (e.g., "yourlanguage")'
+        required: true
+        default: 'controlboard'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      LANGUAGE_PACK: ${{ inputs.LANGUAGE_PACK }}
+      ANDROID_API_LEVEL: 33
+      ANDROID_BUILD_TOOLS: 33.0.0
+      # 明确不使用 NDK
+      ANDROID_NDK_HOME: ""
+      # 只做 debug 构建，不需要签名
+      BUILD_TYPE: debug
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Validate language pack directory
+      run: |
+        if [ ! -d "addons/languages/${{ env.LANGUAGE_PACK }}" ]; then
+          echo "Error: Language pack directory not found at addons/languages/${{ env.LANGUAGE_PACK }}"
+          exit 1
+        fi
+        echo "Validated language pack: ${{ env.LANGUAGE_PACK }}"
+
+    - name: Set up Java
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: Set up Android SDK
+      uses: android-actions/setup-android@v3
+      with:
+        api-level: ${{ env.ANDROID_API_LEVEL }}
+        build-tools: ${{ env.ANDROID_BUILD_TOOLS }}
+
+    - name: Install ImageMagick
+      run: sudo apt-get update && sudo apt-get install -y imagemagick
+
+    - name: Generate icons
+      run: |
+        ./gradlew :addons:languages:${{ env.LANGUAGE_PACK }}:pack:generateLanguagePackIcons \
+                  :addons:languages:${{ env.LANGUAGE_PACK }}:apk:generateStoreLogoIcon \
+                  --no-daemon --stacktrace
+      env:
+        TERM: xterm
+
+    - name: Build APK (assembleDebug only)
+      run: |
+        # 强制仅构建目标模块的 debug APK，避免触发 release/signing
+        ./gradlew :addons:languages:${{ env.LANGUAGE_PACK }}:apk:assembleDebug --no-daemon --stacktrace
+      env:
+        TERM: xterm
+
+    - name: Verify build artifacts
+      run: |
+        APK_DIR="addons/languages/${{ env.LANGUAGE_PACK }}/apk/build/outputs/apk/debug"
+        echo "Looking for APKs in $APK_DIR"
+        # 使用 ls 检查是否存在 APK（避免通配符被当作字符串的问题）
+        set +e
+        APKS=$(ls "$APK_DIR"/*.apk 2>/dev/null || true)
+        set -e
+        if [ -z "$APKS" ]; then
+          echo "APK build failed - no APK found in $APK_DIR"
+          exit 1
+        fi
+        echo "Successfully built APK(s):"
+        ls -la "$APK_DIR"/*.apk
+
+    - name: Upload APK artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ env.LANGUAGE_PACK }}-language-pack
+        path: addons/languages/${{ env.LANGUAGE_PACK }}/apk/build/outputs/apk/debug/*.apk

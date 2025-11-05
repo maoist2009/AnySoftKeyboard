@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Keyboard xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ask="http://schemas.android.com/apk/res-auto"
+    android:keyWidth="20%p"
+    android:keyHeight="@integer/key_normal_height">
+
+    <Row android:rowEdgeFlags="top">
+        <Key android:codes="@integer/key_code_ctrl" 
+             android:isFunctional="true" 
+             android:isSticky="true" 
+             android:isModifier="true" 
+             android:keyLabel="Ctrl" 
+             android:keyEdgeFlags="left"/>
+        <Key android:codes="49" 
+             androidisShiftAlways="true" 
+             androidshiftedKeyOutputText="A" 
+             android:popupCharacters="A B C Q Z" 
+             android:keyLabel="1"/>
+        <Key android:codes="50" 
+             androidisShiftAlways="true" 
+             androidshiftedKeyOutputText="D" 
+             android:popupCharacters="D E F" 
+             android:keyLabel="2"/>
+        <Key android:codes="51" 
+             androidisShiftAlways="true" 
+             androidshiftedKeyOutputText="G" 
+             android:popupCharacters="G H I" 
+             android:keyLabel="3"/>
+        <Key android:codes="52" 
+             androidisShiftAlways="true" 
+             androidshiftedKeyOutputText="J" 
+             android:popupCharacters="J K L" 
+             android:keyLabel="4" 
+             android:keyEdgeFlags="right"/>
+    </Row>
+
+    <Row>
+        <Key android:codes="@integer/key_code_shift" 
+             android:isFunctional="true" 
+             android:isSticky="true" 
+             android:isModifier="true" 
+             android:keyLabel="Shift" 
+             android:keyEdgeFlags="left"/>
+        <Key android:codes="53" 
+             androidisShiftAlways="true" 
+             androidshiftedKeyOutputText="M" 
+             android:popupCharacters="M N O" 
+             android:keyLabel="5"/>
+        <Key android:codes="54" 
+             androidisShiftAlways="true" 
+             androidshiftedKeyOutputText="P" 
+             android:popupCharacters="P Q R" 
+             android:keyLabel="6"/>
+        <Key android:codes="55" 
+             androidisShiftAlways="true" 
+             androidshiftedKeyOutputText="S" 
+             android:popupCharacters="S T U" 
+             android:keyLabel="7"/>
+        <Key android:codes="56" 
+             androidisShiftAlways="true" 
+             androidshiftedKeyOutputText="V" 
+             android:popupCharacters="V W X" 
+             android:keyLabel="8" 
+             android:keyEdgeFlags="right"/>
+    </Row>
+
+    <Row>
+        <Key android:codes="@integer/key_code_alt" 
+             android:isFunctional="true" 
+             android:isSticky="true" 
+             android:isModifier="true" 
+             android:keyLabel="Alt" 
+             android:keyEdgeFlags="left"/>
+        <Key android:codes="@integer/key_code_command" 
+             android:isFunctional="true" 
+             android:isSticky="true" 
+             android:isModifier="true" 
+             android:keyLabel="Cmd"/>
+        <Key android:codes="@integer/key_code_tab" 
+             android:keyLabel="Tab"/>
+        <Key android:codes="@integer/key_code_arrow_up" 
+             androidshiftedKeyOutputText="@integer/key_code_page_up" 
+             androidlongPressCode="@integer/key_code_page_up" 
+             android:keyLabel="↑"/>
+        <Key android:codes="57" 
+             androidisShiftAlways="true" 
+             androidshiftedKeyOutputText="Y" 
+             android:popupCharacters="Y Z 0" 
+             android:keyLabel="9" 
+             android:keyEdgeFlags="right"/>
+    </Row>
+
+    <Row android:rowEdgeFlags="bottom">
+        <Key android:codes="@integer/key_code_fn" 
+             android:isFunctional="true" 
+             android:keyLabel="Fn" 
+             android:keyEdgeFlags="left" 
+             androidlongPressCode="@integer/key_code_fn_mode"
+             androidhintLabel="Long press: Switch keyboard"/>
+        <Key android:codes="@integer/key_code_esc" 
+             androidlongPressCode="@integer/key_code_space" 
+             androiddoubleTapCode="@integer/key_code_enter" 
+             android:keyLabel="Esc"/>
+        <Key android:codes="@integer/key_code_arrow_left" 
+             androidshiftedKeyOutputText="@integer/key_code_home" 
+             androidlongPressCode="@integer/key_code_home" 
+             android:keyLabel="←"/>
+        <Key android:codes="@integer/key_code_arrow_down" 
+             androidshiftedKeyOutputText="@integer/key_code_page_down" 
+             androidlongPressCode="@integer/key_code_page_down" 
+             android:keyLabel="↓"/>
+        <Key android:codes="@integer/key_code_arrow_right" 
+             androidshiftedKeyOutputText="@integer/key_code_end" 
+             androidlongPressCode="@integer/key_code_end" 
+             android:keyLabel="→" 
+             android:keyEdgeFlags="right"/>
+    </Row>
+
+</Keyboard>

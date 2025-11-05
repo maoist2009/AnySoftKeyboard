@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<keyboards
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 列出该 language pack 使用的键盘布局资源 -->
+    <keyboard android:layout="@xml/keyboard_control" />
+    <keyboard android:layout="@xml/keyboard_fn" />
+</keyboards>
